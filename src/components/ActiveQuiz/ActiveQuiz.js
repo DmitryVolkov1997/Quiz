@@ -3,18 +3,18 @@ import classes from "./ActiveQuiz.module.scss";
 import AnswersList from "./AnswersList/AnswersList";
 
 const ActiveQuiz = (props) => {
-  return (
-    <div className={classes.ActiveQuiz}>
-      <p className={classes.question}>
+    return (
+      <div className={classes.ActiveQuiz}>
+          <p className={classes.question}>
         <span>
-          <strong>2. Сколько будет 2 + 2?</strong>&nbsp;
+          <strong>{props.answerNumber}.&nbsp;{props.question}</strong>&nbsp;
         </span>
-        <small>2 из 30</small>
-      </p>
+              <small>{props.answerNumber} из {props.quizLength}</small>
+          </p>
 
-      <AnswersList answers={props.answers} />
-    </div>
-  );
+          <AnswersList answers={props.answers} onAnswerClick={props.onAnswerClick}/>
+      </div>
+    );
 };
 
 export default ActiveQuiz;
