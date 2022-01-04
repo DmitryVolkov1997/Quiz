@@ -8,7 +8,6 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 1.6rem;
-  color: #2D2442;
 
   &__list {
   }
@@ -23,12 +22,14 @@
     }
 
     i {
-      margin-left: .7rem;
+      margin-left: 1rem;
     }
   }
 
   &__count {
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: green;
   }
 
   &__btn {
@@ -43,7 +44,7 @@
     border: 1px solid #007bff;
     background: #007bff;
     display: inline-block;
-    margin-top: 2rem;
+    //margin-top: 2rem;
     transition: background .3s linear;
 
     &:hover {
@@ -55,6 +56,10 @@
 .borderTop {
   border-top: 1px solid lightgrey;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .success {

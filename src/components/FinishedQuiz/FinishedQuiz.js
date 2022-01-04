@@ -2,27 +2,37 @@ import React from "react";
 import classes from './FinishedQuiz.module.scss';
 
 const FinishedQuiz = (props) => {
+    const successCount = Object.keys(props.results).reduce((total, key) => {
+        if (props.results[key] === 'success') {
+            total += 1;
+        }
+
+        return total;
+    }, 0);
+
     return (
       <div className={classes.FinishedQuiz}>
           <ul className={classes.FinishedQuiz__list}>
-              <li className={classes.FinishedQuiz__item}>
-                  <strong>1. </strong>
-                  How are you?
-                  <i className={`fa fa-times ${classes.error}`}/>
-              </li>
-              <li className={classes.FinishedQuiz__item}>
-                  <strong>2. </strong>
-                  Do you speak English?
-                  <i className={`fa fa-check ${classes.success}`}/>
-              </li>
+              {
+                  props.quiz.map((quizItem, index) => {
+                      const cls = ['fa', props.results[quizItem.id] === 'error' ? "fa-times" : "fa-check", classes[props.results[quizItem.id]]];
+                      return (
+                        <li className={classes.FinishedQuiz__item} key={index}>
+                            <strong>{index + 1}</strong>.&nbsp;
+                            {quizItem.question}
+                            <i className={cls.join(" ")}/>
+                        </li>
+                      );
+                  })
+              }
           </ul>
-          <p className={classes.FinishedQuiz__count}>Правильно 5 из 30</p>
+
 
           <div className={classes.borderTop}>
-              <button className={classes.FinishedQuiz__btn}>Повторить</button>
+              <p className={classes.FinishedQuiz__count}>Правильно {successCount} из {props.quiz.length}</p>
+              <button className={classes.FinishedQuiz__btn} onClick={props.onRetry}>Повторить</button>
           </div>
       </div>
     );
 };
-
 export default FinishedQuiz;
