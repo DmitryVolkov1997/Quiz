@@ -1,5 +1,6 @@
 import React from "react";
 import classes from './FinishedQuiz.module.scss';
+import Button from "../UI/Button/Button";
 
 const FinishedQuiz = (props) => {
     const successCount = Object.keys(props.results).reduce((total, key) => {
@@ -30,7 +31,12 @@ const FinishedQuiz = (props) => {
 
           <div className={classes.borderTop}>
               <p className={classes.FinishedQuiz__count}>Правильно {successCount} из {props.quiz.length}</p>
-              <button className={classes.FinishedQuiz__btn} onClick={props.onRetry}>Повторить</button>
+              <Button className={classes.FinishedQuiz__btn} onClick={props.onRetry} type="primary">
+                  Повторить
+              </Button>
+              <Button>
+                Перейти в список тестов
+              </Button>
           </div>
       </div>
     );

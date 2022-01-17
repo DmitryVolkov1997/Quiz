@@ -1,0 +1,36 @@
+.Button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  margin-right: 1.5rem;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: 1px solid #007bff;
+  background: #007bff;
+  color: #ffffff;
+
+  &:active {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  &:disabled {
+    background: #ccc;
+    color: #2D2442;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  color: rgba(240, 87, 108, .7);
+}
+
+.success {
+  color: rgba(161, 240, 69, .7);
+}
+
+.primary {
+  background: #2884f6;
+  color: #ffffff;
+}

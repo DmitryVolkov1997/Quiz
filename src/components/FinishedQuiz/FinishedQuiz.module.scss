@@ -30,6 +30,7 @@
     font-size: 1.6rem;
     font-weight: 500;
     color: green;
+    margin-bottom: 2rem;
   }
 
   &__btn {
@@ -55,9 +56,9 @@
 
 .borderTop {
   border-top: 1px solid lightgrey;
-  text-align: right;
-  display: flex;
-  justify-content: space-between;
+  text-align: left;
+  /* display: flex;
+  justify-content: space-between; */
   padding-top: 2rem;
   margin-top: 2.5rem;
 }
