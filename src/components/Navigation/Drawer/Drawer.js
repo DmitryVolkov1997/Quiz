@@ -1,38 +1,57 @@
 import React from "react";
-import classes from './Drawer.module.scss';
+import classes from "./Drawer.module.scss";
 import Backdrop from "../../UI/Backdrop/Backdrop";
+import { NavLink } from "react-router-dom";
 
-const links = [1, 2, 3];
+const links = [
+  { to: "/", label: "Список" },
+  { to: "/auth", label: "Авторизация" },
+  { to: "/quiz-creator", label: "Создать тест" },
+];
 
 class Drawer extends React.Component {
-    renderLinks = () => {
-        return links.map((link, index) => {
-            return (
-              <li className={classes.item} key={index}>
-                  <a className={classes.link} href="#"> Тест {link}</a>
-              </li>
-            );
-        });
-    };
+  clickHandler = () => {
+    this.props.onClose();
+  };
 
-    render() {
-        const cls = [classes.Drawer];
+  renderLinks = () => {
+    return links.map((link, index) => {
+      return (
+        <li className={classes.item} key={index}>
+          {/* <a className={classes.link} href="#">
+            {" "}
+            Тест {link}
+          </a> */}
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? [classes.link, classes.active].join(" ") : classes.link
+            }
+            to={link.to}
+            onClick={this.clickHandler}
+          >
+            {link.label}
+          </NavLink>
+        </li>
+      );
+    });
+  };
 
-        if (!this.props.isOpen) {
-            cls.push(classes.close);
-        }
+  render() {
+    const cls = [classes.Drawer];
 
-        return (
-          <>
-              <nav className={cls.join(" ")}>
-                  <ul className={classes.list}>
-                      {this.renderLinks()}
-                  </ul>
-              </nav>
-              {this.props.isOpen ? <Backdrop onClick={this.props.onClose}/> : null}
-          </>
-        );
+    if (!this.props.isOpen) {
+      cls.push(classes.close);
     }
+
+    return (
+      <>
+        <nav className={cls.join(" ")}>
+          <ul className={classes.list}>{this.renderLinks()}</ul>
+        </nav>
+        {this.props.isOpen ? <Backdrop onClick={this.props.onClose} /> : null}
+      </>
+    );
+  }
 }
 
 export default Drawer;

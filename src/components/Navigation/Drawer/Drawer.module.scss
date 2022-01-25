@@ -17,9 +17,7 @@
   }
 }
 
-.list {
-
-}
+.list {}
 
 .item {
   margin-bottom: 1.5rem;
@@ -35,7 +33,8 @@
   transition: opacity .3s ease-in;
 
   &:hover,
-  &:active {
+  &:active,
+  &.active {
     opacity: .7;
   }
 }
